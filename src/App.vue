@@ -1,12 +1,26 @@
 <template>
   <div id="app">
     <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
+      <span @click="go('/login')">Login</span> |
+      <span @click="go('/dashboard')">Dashboard</span>
+      <!-- {{ $route.params }} -->
     </div>
-    <router-view/>
+    <router-view :key="$route.fullPath" />
   </div>
 </template>
+
+<script>
+// import UserName from '@/components/UserName.vue';
+
+export default {
+  methods: {
+    go(targetName) {
+      this.$router.push(targetName);
+    },
+  },
+  compute: {},
+};
+</script>
 
 <style>
 #app {
